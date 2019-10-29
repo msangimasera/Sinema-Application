@@ -5,7 +5,7 @@ import os
 
 
 AT = Airtable(os.environ.get('AIRTABLE_MOVIESTABLE_BASE_ID'),
-              'Movies',
+              'Sinema',
               api_key=os.environ.get('AIRTABLE_API_KEY'))
 
 # Create your views here.
