@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html>
+	<head>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" integrity="sha256-PHcOkPmOshsMBC+vtJdVr5Mwb7r0LkSVJPlPrp/IMpU=" crossorigin="anonymous" />
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'movies/app.css' %}" />
+	</head>
+
+     <body>
+
+         <div class="wrapper">
+			<nav class="nav">
+				<div class="container">
+                    <div class="nav__menu">
+                    	<a href="/" class="nav__header">Clever Movie</a>
+                        <div class="col-md-5 pull-right">
+                            <form action="" class="form-inline" name="search">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="query" value="{{request.GET.query}}" />
+                                    <input type="submit" value="Search" class="btn btn-primary" />
+                                </div>
+                            </form>
+                        </div>
+                </div>
+
+				</div>
+			</nav>
+
+
+             <section class="result">
+             	<div class="container">
+             		<div class="movies">
+             			{% for movie in search_result %}
+                        	<div class="movies__item">
+                                <i class="movies__item-star fa fa-star hide"></i>
+                                <p class="movies__item-rating hide">{{movie.fields.Rating}}/10</p>
+                        		<img class="movies__item-image" src="{{movie.fields.Pictures.0.url}}" alt="" />
+                                <div class="movies__item-title">
+                                    <p>
+                                    	{{movie.fields.Name}}
+                                    </p>
+                                </div>
+                        	</div>
+                        {% endfor %}
+             		</div>
+             	</div>
+             </section>
+         </div>
+
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/popper.min.js" integrity="sha256-1XfFQxRfNvDJW3FdZ+xlo2SbodG2+rFArw6XsVzu3bc=" crossorigin="anonymous"></script>
+         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+         <script src="{% static 'movies/app.js' %}"></script>
+     </body>
+</html>
+
+
+
+
